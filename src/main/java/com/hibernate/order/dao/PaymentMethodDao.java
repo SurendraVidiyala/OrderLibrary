@@ -6,11 +6,13 @@ import com.hibernate.order.entity.PaymentMethod;
 
 public interface PaymentMethodDao {
 
-    void insert(PaymentMethod paymentMethod);
+	List<PaymentMethod> findPaymentMethods(Long customId);
 
-    List<PaymentMethod> get(int customerId);
+	void deletePaymentMethods(Long customId);
 
-    void update(PaymentMethod paymentMethod);
+	PaymentMethod updatePaymentMethod(PaymentMethod paymentMethod);
 
-    void delete(int paymentId);
+	void insertPaymentMethods(List<PaymentMethod> methods);
+
+	PaymentMethod getPaymentMethod(Integer paymentMethodId);
 }

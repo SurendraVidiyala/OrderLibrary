@@ -4,7 +4,17 @@ import com.hibernate.order.entity.Customer;
 
 public interface CustomerDao {
 
-    int insertCustomer(Customer customer);
+	Customer saveCustomer(Customer customer);
 
-    void deleteCustomer(Customer customer);
+	Customer findCustomer(Customer customer); 
+
+	Customer findCustomerFullData(Long customId);
+
+    void deleteCustomer(Long customId);
+
+	Customer updateCustomer(Customer customer);
+
+	Customer findCustomerAddressData(Long customId);
+
+	Customer getCustomer(Long customId);
 }

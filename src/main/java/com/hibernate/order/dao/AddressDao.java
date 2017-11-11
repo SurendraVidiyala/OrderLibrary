@@ -4,5 +4,7 @@ import com.hibernate.order.entity.Address;
 
 public interface AddressDao {
 
-    void insertAddress(Address addresses);
+	Address updateAddress(Address address);
+
+	Long deleteAddress(Long customId);
 }

@@ -23,21 +23,23 @@ public class Address implements Serializable {
 	@Id
 	@GeneratedValue(generator = "gen")
 	@GenericGenerator(name = "gen", strategy = "foreign", parameters = @Parameter(name = "property", value = "customer"))
-	private Integer addressId;
+	private Long cutomerId;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@PrimaryKeyJoinColumn
 	private Customer customer;
 
-	private Integer aptNo, streetNo, zipCode;
+	private Integer aptNo, streetNo;
+
+	private String zipCode;
 	private String streetName, city, state;
 
-	public Integer getAddressId() {
-		return addressId;
+	public Long getCutomerId() {
+		return cutomerId;
 	}
 
-	public void setAddressId(Integer addressId) {
-		this.addressId = addressId;
+	public void setCutomerId(Long cutomerId) {
+		this.cutomerId = cutomerId;
 	}
 
 	public Customer getCustomer() {
@@ -64,12 +66,12 @@ public class Address implements Serializable {
 		this.streetNo = streetNo;
 	}
 
-	public Integer getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(Integer zipCode) {
-		this.zipCode = zipCode;
+	public void setZipCode(String string) {
+		this.zipCode = string;
 	}
 
 	public String getStreetName() {
@@ -102,7 +104,7 @@ public class Address implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", customer=" + customer + ", aptNo=" + aptNo + ", streetNo="
+		return "Address [cutomerId=" + cutomerId + ", customer=" + customer + ", aptNo=" + aptNo + ", streetNo="
 				+ streetNo + ", zipCode=" + zipCode + ", streetName=" + streetName + ", city=" + city + ", state="
 				+ state + "]";
 	}

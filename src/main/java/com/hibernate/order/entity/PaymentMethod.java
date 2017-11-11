@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class PaymentMethod implements Serializable {
@@ -18,17 +20,21 @@ public class PaymentMethod implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long paymentId;
+	private Integer paymentId;
 	private String cardNo;
 	private String cardName;
 	private Date dateFrom;
 	private CardType cardType;
 
-	public Long getPaymentId() {
+	@ManyToOne
+	@JoinColumn(name = "customerId", nullable = false)
+	private Customer customer;
+
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(Long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -64,6 +70,14 @@ public class PaymentMethod implements Serializable {
 		this.cardType = cardType;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -71,7 +85,7 @@ public class PaymentMethod implements Serializable {
 	@Override
 	public String toString() {
 		return "PaymentMethod [paymentId=" + paymentId + ", cardNo=" + cardNo + ", cardName=" + cardName + ", dateFrom="
-				+ dateFrom + ", cardType=" + cardType + "]";
+				+ dateFrom + ", cardType=" + cardType + ", customer=" + customer + "]";
 	}
 
 }
